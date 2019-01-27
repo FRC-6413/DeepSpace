@@ -42,7 +42,7 @@ public class AlignToTarget extends Command {
   double heading_error = Math.abs(tx) <= 3 ? 0 : tx/25;
   double steering_adjust = 0.0;
   
-  steering_adjust = heading_error != 0 ? heading_error : 0;    
+  //steering_adjust = heading_error != 0 ? heading_error : 0;    
 
   if(steering_adjust != 0 && Math.abs(steering_adjust) < min_command) {
     steering_adjust = steering_adjust < 0 ? -min_command : min_command;
