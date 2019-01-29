@@ -15,17 +15,15 @@ import frc.robot.Robot;
 
 public class AlignToTarget extends Command {
 
-  XboxController driveJoystick;
+  XboxController _driveJoystick;
 
-  double kP = -0.1;
-  double min_command = 0.5;
+  double _kP = -0.1;
+  double _minCommand = 0.5;
 
   public AlignToTarget(XboxController controller) {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(Robot.m_driveBase);
+    requires(Robot.DriveBase);
     
-    driveJoystick = controller;
+    _driveJoystick = controller;
   }
 
   // Called just before this Command runs the first time
@@ -39,23 +37,16 @@ public class AlignToTarget extends Command {
   //System.out.println("Command Started");
   double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
 
-  double heading_error = Math.abs(tx) <= 3 ? 0 : tx/25;
-  double steering_adjust = 0.0;
+  double headingError = Math.abs(tx) <= 3 ? 0 : tx/25;
+  double steeringAdjust = 0.0;
   
-  //steering_adjust = heading_error != 0 ? heading_error : 0;    
+  steeringAdjust = headingError;    
 
-  if(steering_adjust != 0 && Math.abs(steering_adjust) < min_command) {
-    steering_adjust = steering_adjust < 0 ? -min_command : min_command;
+  if(steeringAdjust != 0 && Math.abs(steeringAdjust) < _minCommand) {
+    steeringAdjust = steeringAdjust < 0 ? -_minCommand : _minCommand;
   }
 
-
-  //left_command += steering_adjust;
-  //right_command -= steering_adjust;
-
-  //System.out.println("steering_adjust:" + steering_adjust);
-  //System.out.println("joystick: " + driveJoystick.getY(Hand.kLeft));
-
-  Robot.driveBaseRobotDrive41.arcadeDrive(-driveJoystick.getY(Hand.kLeft), steering_adjust);
+  Robot.DifferentalDrive.arcadeDrive(-_driveJoystick.getY(Hand.kLeft), steeringAdjust);
 }
 
 // Make this return true when this Command no longer needs to run execute()
