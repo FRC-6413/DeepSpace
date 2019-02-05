@@ -3,6 +3,7 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -16,10 +17,25 @@ public class Robot extends TimedRobot {
   public static DriveBase DriveBase = new DriveBase();
   public static OI Oi;
 
+  // drive motors
   public static WPI_TalonSRX LeftMotor;
   public static WPI_VictorSPX LeftFollow;
   public static WPI_TalonSRX RightMotor;
   public static WPI_VictorSPX RightFollow;
+
+  // arm and elevator
+  public static WPI_TalonSRX Elevator;
+  public static WPI_TalonSRX ElevatorSecondary;
+  public static WPI_VictorSPX Wrist;
+  public static WPI_VictorSPX Intake;
+
+  public static AnalogInput ElevatorPot;
+  public static AnalogInput WristPot;
+
+
+  // elevator
+  public static WPI_VictorSPX Climber;
+
 
   public static DifferentialDrive DifferentalDrive;
 
@@ -33,6 +49,7 @@ public class Robot extends TimedRobot {
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", _chooser);
 
+    // drive
     LeftMotor = new WPI_TalonSRX(RobotMap.LeftMotor);
     LeftFollow = new WPI_VictorSPX(RobotMap.LeftFollow);
     RightMotor = new WPI_TalonSRX(RobotMap.RightMotor);
@@ -42,6 +59,18 @@ public class Robot extends TimedRobot {
     RightFollow.follow(RightMotor);
 
     DifferentalDrive = new DifferentialDrive(LeftMotor, RightMotor);
+
+    // elevator and arm
+    Elevator = new WPI_TalonSRX(RobotMap.ElevatorMain);
+    ElevatorSecondary = new WPI_TalonSRX(RobotMap.ElevatorSecondary);
+    Wrist = new WPI_VictorSPX(RobotMap.Wrist);
+    Intake = new WPI_VictorSPX(RobotMap.Intake);
+
+    ElevatorPot = new AnalogInput(RobotMap.ElevatorPot);
+    WristPot = new AnalogInput(RobotMap.WristPot);
+
+    // climber
+    Climber = new WPI_VictorSPX(RobotMap.Climber);
   }
 
   @Override

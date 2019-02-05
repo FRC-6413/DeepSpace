@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.AlignToTarget;
@@ -33,14 +34,43 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-  public XboxController DriveJoystick;
+  // Driver Joystick
+  public static XboxController DriveJoystick;
+  public static JoystickButton AlignToTargetButton;
 
-  public JoystickButton AlignToTargetButton;
+  // Button Board
+  public static Joystick ButtonBoard;
+  public static JoystickButton HatchFloor;
+  public static JoystickButton HatchOne;
+  public static JoystickButton HatchTwo;
+  public static JoystickButton HatchThree;
+  public static JoystickButton CargoFloor;
+  public static JoystickButton CargoOne;
+  public static JoystickButton CargoTwo;
+  public static JoystickButton CargoThree;
+  public static JoystickButton Park;
+  public static JoystickButton IntakeIn;
+  public static JoystickButton IntakeOut;
+
 
   public OI() {
-    DriveJoystick = new XboxController(0);
-
-    AlignToTargetButton = new JoystickButton(DriveJoystick, 1);
+    // Driver controller
+    DriveJoystick = new XboxController(RobotMap.DriveController);
+    AlignToTargetButton = new JoystickButton(DriveJoystick, RobotMap.AlignToTarget);
     AlignToTargetButton.whileHeld(new AlignToTarget(DriveJoystick));
+
+    // Button Board
+    ButtonBoard = new Joystick(RobotMap.ButtonBoard);
+    HatchFloor = new JoystickButton(ButtonBoard, RobotMap.HatchFloor);
+    HatchOne = new JoystickButton(ButtonBoard, RobotMap.HatchOne);
+    HatchTwo = new JoystickButton(ButtonBoard, RobotMap.HatchTwo);
+    HatchThree = new JoystickButton(ButtonBoard, RobotMap.HatchThree);
+    CargoFloor = new JoystickButton(ButtonBoard, RobotMap.CargoFloor);
+    CargoOne = new JoystickButton(ButtonBoard, RobotMap.CargoOne);
+    CargoTwo = new JoystickButton(ButtonBoard, RobotMap.CargoTwo);
+    CargoThree = new JoystickButton(ButtonBoard, RobotMap.CargoThree);
+    Park = new JoystickButton(ButtonBoard, RobotMap.Park);
+    IntakeIn = new JoystickButton(ButtonBoard, RobotMap.IntakeIn);
+    IntakeOut = new JoystickButton(ButtonBoard, RobotMap.IntakeOut);
   }  
 }

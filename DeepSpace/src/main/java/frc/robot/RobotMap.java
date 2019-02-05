@@ -26,4 +26,22 @@ public class RobotMap {
   // potentiometers
   public static int WristPot = 0;
   public static int ElevatorPot = 1;
+
+  // controllers
+  public static int DriveController = 0;
+  public static int ButtonBoard = 1;
+
+  public static int AlignToTarget = 1;
+
+  public static int HatchFloor = 0;
+  public static int HatchOne = 1;
+  public static int HatchTwo = 2;
+  public static int HatchThree = 3;
+  public static int CargoFloor = 4;
+  public static int CargoOne = 5;
+  public static int CargoTwo = 6;
+  public static int CargoThree = 7;
+  public static int Park = 8;
+  public static int IntakeIn = 9;
+  public static int IntakeOut = 10;
 }
