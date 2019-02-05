@@ -1,6 +1,8 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -15,7 +17,9 @@ public class Robot extends TimedRobot {
   public static OI Oi;
 
   public static WPI_TalonSRX LeftMotor;
+  public static WPI_VictorSPX LeftFollow;
   public static WPI_TalonSRX RightMotor;
+  public static WPI_VictorSPX RightFollow;
 
   public static DifferentialDrive DifferentalDrive;
 
@@ -30,7 +34,12 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto mode", _chooser);
 
     LeftMotor = new WPI_TalonSRX(RobotMap.LeftMotor);
+    LeftFollow = new WPI_VictorSPX(RobotMap.LeftFollow);
     RightMotor = new WPI_TalonSRX(RobotMap.RightMotor);
+    RightFollow = new WPI_VictorSPX(RobotMap.RightFollow);
+
+    LeftFollow.follow(LeftMotor);
+    RightFollow.follow(RightMotor);
 
     DifferentalDrive = new DifferentialDrive(LeftMotor, RightMotor);
   }
