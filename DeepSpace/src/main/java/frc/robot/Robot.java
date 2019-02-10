@@ -18,10 +18,10 @@ public class Robot extends TimedRobot {
   public static OI Oi;
 
   // drive motors
-  public static WPI_TalonSRX LeftMotor;
-  public static WPI_VictorSPX LeftFollow;
-  public static WPI_TalonSRX RightMotor;
-  public static WPI_VictorSPX RightFollow;
+  public static WPI_TalonSRX LeftMotor = new WPI_TalonSRX(RobotMap.LeftMotor);
+  public static WPI_VictorSPX LeftFollow = new WPI_VictorSPX(RobotMap.LeftFollow);
+  public static WPI_TalonSRX RightMotor= new WPI_TalonSRX(RobotMap.RightMotor);
+  public static WPI_VictorSPX RightFollow = new WPI_VictorSPX(RobotMap.RightFollow);
 
   // arm and elevator
   public static WPI_TalonSRX Elevator;
@@ -37,7 +37,7 @@ public class Robot extends TimedRobot {
   public static WPI_VictorSPX Climber;
 
 
-  public static DifferentialDrive DifferentalDrive;
+  public static DifferentialDrive DifferentalDrive = new DifferentialDrive(LeftMotor, RightMotor);
 
   Command _autonomousCommand;
   SendableChooser<Command> _chooser = new SendableChooser<>();
@@ -49,16 +49,8 @@ public class Robot extends TimedRobot {
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", _chooser);
 
-    // drive
-    LeftMotor = new WPI_TalonSRX(RobotMap.LeftMotor);
-    LeftFollow = new WPI_VictorSPX(RobotMap.LeftFollow);
-    RightMotor = new WPI_TalonSRX(RobotMap.RightMotor);
-    RightFollow = new WPI_VictorSPX(RobotMap.RightFollow);
-
     LeftFollow.follow(LeftMotor);
     RightFollow.follow(RightMotor);
-
-    DifferentalDrive = new DifferentialDrive(LeftMotor, RightMotor);
 
     // elevator and arm
     Elevator = new WPI_TalonSRX(RobotMap.ElevatorMain);

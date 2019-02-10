@@ -35,7 +35,7 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   // Driver Joystick
-  public static XboxController DriveJoystick;
+  public XboxController DriveJoystick = new XboxController(RobotMap.DriveController);
   public static JoystickButton AlignToTargetButton;
 
   // Button Board
