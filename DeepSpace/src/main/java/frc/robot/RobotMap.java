@@ -9,10 +9,10 @@ package frc.robot;
 
 public class RobotMap {
   // motors
-  public static int LeftDriveTalon = 7;
-  public static int RightDriveTalon = 3;
-  public static int LeftDriveVictor = 6;
-  public static int RightDriveVictor = 4;
+  public static int LeftMotor = 7;
+  public static int RightMotor = 3;
+  public static int LeftFollow = 6;
+  public static int RightFollow = 4;
 
   public static int ElevatorMain = 6;
   public static int ElevatorSecondary = 7;

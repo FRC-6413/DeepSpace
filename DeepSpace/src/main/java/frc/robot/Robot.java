@@ -18,10 +18,10 @@ public class Robot extends TimedRobot {
   public static OI Oi = new OI();
 
   // drive motors
-  public static WPI_TalonSRX LeftMotor = new WPI_TalonSRX(RobotMap.LeftDriveTalon);
-  public static WPI_VictorSPX LeftFollow = new WPI_VictorSPX(RobotMap.LeftDriveVictor);
-  public static WPI_TalonSRX RightMotor = new WPI_TalonSRX(RobotMap.RightDriveTalon);
-  public static WPI_VictorSPX RightFollow = new WPI_VictorSPX(RobotMap.RightDriveVictor);
+  public static WPI_TalonSRX LeftMotor = new WPI_TalonSRX(RobotMap.LeftMotor);
+  public static WPI_VictorSPX LeftFollow = new WPI_VictorSPX(RobotMap.LeftFollow);
+  public static WPI_TalonSRX RightMotor= new WPI_TalonSRX(RobotMap.RightMotor);
+  public static WPI_VictorSPX RightFollow = new WPI_VictorSPX(RobotMap.RightFollow);
 
   // arm and elevator
   public static WPI_TalonSRX Elevator;
