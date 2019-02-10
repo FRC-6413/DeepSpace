@@ -35,7 +35,7 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   // Driver Joystick
-  public static XboxController DriveJoystick;
+  public XboxController DriveJoystick = new XboxController(RobotMap.DriveController);
   public static JoystickButton AlignToTargetButton;
 
   // Button Board
@@ -55,12 +55,12 @@ public class OI {
 
   public OI() {
     // Driver controller
-    DriveJoystick = new XboxController(RobotMap.DriveController);
+    //DriveJoystick;
     AlignToTargetButton = new JoystickButton(DriveJoystick, RobotMap.AlignToTarget);
     AlignToTargetButton.whileHeld(new AlignToTarget(DriveJoystick));
 
     // Button Board
-    ButtonBoard = new Joystick(RobotMap.ButtonBoard);
+    /*ButtonBoard = new Joystick(RobotMap.ButtonBoard);
     HatchFloor = new JoystickButton(ButtonBoard, RobotMap.HatchFloor);
     HatchOne = new JoystickButton(ButtonBoard, RobotMap.HatchOne);
     HatchTwo = new JoystickButton(ButtonBoard, RobotMap.HatchTwo);
@@ -71,6 +71,6 @@ public class OI {
     CargoThree = new JoystickButton(ButtonBoard, RobotMap.CargoThree);
     Park = new JoystickButton(ButtonBoard, RobotMap.Park);
     IntakeIn = new JoystickButton(ButtonBoard, RobotMap.IntakeIn);
-    IntakeOut = new JoystickButton(ButtonBoard, RobotMap.IntakeOut);
+    IntakeOut = new JoystickButton(ButtonBoard, RobotMap.IntakeOut);*/
   }  
 }

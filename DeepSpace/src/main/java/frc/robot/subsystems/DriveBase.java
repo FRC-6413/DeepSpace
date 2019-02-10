@@ -12,10 +12,11 @@ public class DriveBase extends Subsystem {
   //private final WPI_TalonSRX _leftMotor = Robot.LeftMotor;
   //private final WPI_TalonSRX _rightMotor = Robot.RightMotor;
 
-  private final DifferentialDrive _robotDrive = Robot.DifferentalDrive;
+  private DifferentialDrive _robotDrive;
 
   @Override
   public void initDefaultCommand() {
+    _robotDrive = Robot.DifferentalDrive;
     setDefaultCommand(new ArcadeDrive());
   }
 
