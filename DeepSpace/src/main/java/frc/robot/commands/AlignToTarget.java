@@ -18,7 +18,7 @@ public class AlignToTarget extends Command {
   XboxController _driveJoystick;
 
   double _kP = -0.1;
-  double _minCommand = 0.5;
+  double _minCommand = 0.15;
 
   public AlignToTarget(XboxController controller) {
     requires(Robot.DriveBase);
@@ -45,6 +45,9 @@ public class AlignToTarget extends Command {
   if(steeringAdjust != 0 && Math.abs(steeringAdjust) < _minCommand) {
     steeringAdjust = steeringAdjust < 0 ? -_minCommand : _minCommand;
   }
+
+  System.out.println("steeringAdjust: " + steeringAdjust);
+  System.out.println("tx: " + tx);
 
   Robot.DifferentalDrive.arcadeDrive(-_driveJoystick.getY(Hand.kLeft), steeringAdjust);
 }
