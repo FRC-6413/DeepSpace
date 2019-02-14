@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.AlignToTarget;
+import frc.robot.commands.ButtonPress;
 
 public class OI {
   //// CREATING BUTTONS
@@ -60,7 +61,7 @@ public class OI {
     AlignToTargetButton.whileHeld(new AlignToTarget(DriveJoystick));
 
     // Button Board
-    /*ButtonBoard = new Joystick(RobotMap.ButtonBoard);
+    ButtonBoard = new Joystick(RobotMap.ButtonBoard);
     HatchFloor = new JoystickButton(ButtonBoard, RobotMap.HatchFloor);
     HatchOne = new JoystickButton(ButtonBoard, RobotMap.HatchOne);
     HatchTwo = new JoystickButton(ButtonBoard, RobotMap.HatchTwo);
@@ -71,6 +72,6 @@ public class OI {
     CargoThree = new JoystickButton(ButtonBoard, RobotMap.CargoThree);
     Park = new JoystickButton(ButtonBoard, RobotMap.Park);
     IntakeIn = new JoystickButton(ButtonBoard, RobotMap.IntakeIn);
-    IntakeOut = new JoystickButton(ButtonBoard, RobotMap.IntakeOut);*/
+    IntakeOut = new JoystickButton(ButtonBoard, RobotMap.IntakeOut);
   }  
 }

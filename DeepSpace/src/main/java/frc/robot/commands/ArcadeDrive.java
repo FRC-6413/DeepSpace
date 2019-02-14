@@ -14,7 +14,6 @@ public class ArcadeDrive extends Command {
 
   @Override
   protected void execute() {
-    System.out.print(Robot.Oi.DriveJoystick);
     Robot.DriveBase.ArcadeDriveMethod(Robot.Oi.DriveJoystick);
   }
 

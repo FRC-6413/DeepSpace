@@ -12,9 +12,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.subsystems.DriveBase;
+import frc.robot.subsystems.Elevator;
 
 public class Robot extends TimedRobot {
   public static DriveBase DriveBase = new DriveBase();
+  public static Elevator ElevatorSubsystem = new Elevator();
   public static OI Oi = new OI();
 
   // drive motors
