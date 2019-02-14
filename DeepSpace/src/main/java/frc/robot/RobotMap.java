@@ -44,4 +44,5 @@ public class RobotMap {
   public static int Park = 11;
   public static int IntakeIn = 5;
   public static int IntakeOut = 12;
+  public static int Joystick = 10;
 }

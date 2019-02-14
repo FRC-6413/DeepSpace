@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.AlignToTarget;
 import frc.robot.commands.ButtonPress;
 
@@ -36,7 +37,7 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   // Driver Joystick
-  public XboxController DriveJoystick = new XboxController(RobotMap.DriveController);
+  public XboxController DriveJoystick;
   public static JoystickButton AlignToTargetButton;
 
   // Button Board
@@ -56,6 +57,8 @@ public class OI {
 
   public OI() {
     // Driver controller
+    DifferentialDrive = new XboxController(RobotMap.DriveController)
+
     //DriveJoystick;
     AlignToTargetButton = new JoystickButton(DriveJoystick, RobotMap.AlignToTarget);
     AlignToTargetButton.whileHeld(new AlignToTarget(DriveJoystick));
