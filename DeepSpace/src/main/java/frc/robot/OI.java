@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.AlignToTarget;
+import frc.robot.commands.ButtonPress;
 
 public class OI {
   //// CREATING BUTTONS
@@ -60,17 +61,28 @@ public class OI {
     AlignToTargetButton.whileHeld(new AlignToTarget(DriveJoystick));
 
     // Button Board
-    /*ButtonBoard = new Joystick(RobotMap.ButtonBoard);
+    ButtonBoard = new Joystick(RobotMap.ButtonBoard);
     HatchFloor = new JoystickButton(ButtonBoard, RobotMap.HatchFloor);
+    HatchFloor.whenPressed(new ButtonPress("HatchFloor"));
     HatchOne = new JoystickButton(ButtonBoard, RobotMap.HatchOne);
+    HatchOne.whenPressed(new ButtonPress("HatchOne"));
     HatchTwo = new JoystickButton(ButtonBoard, RobotMap.HatchTwo);
+    HatchTwo.whenPressed(new ButtonPress("HatchTwo"));
     HatchThree = new JoystickButton(ButtonBoard, RobotMap.HatchThree);
+    HatchThree.whenPressed(new ButtonPress("HatchThree"));
     CargoFloor = new JoystickButton(ButtonBoard, RobotMap.CargoFloor);
+    CargoFloor.whenPressed(new ButtonPress("CargoFloor"));
     CargoOne = new JoystickButton(ButtonBoard, RobotMap.CargoOne);
+    CargoOne.whenPressed(new ButtonPress("CargoOne"));
     CargoTwo = new JoystickButton(ButtonBoard, RobotMap.CargoTwo);
+    CargoTwo.whenPressed(new ButtonPress("CargoTwo"));
     CargoThree = new JoystickButton(ButtonBoard, RobotMap.CargoThree);
+    CargoThree.whenPressed(new ButtonPress("CargoThree"));
     Park = new JoystickButton(ButtonBoard, RobotMap.Park);
+    Park.whenPressed(new ButtonPress("Park"));
     IntakeIn = new JoystickButton(ButtonBoard, RobotMap.IntakeIn);
-    IntakeOut = new JoystickButton(ButtonBoard, RobotMap.IntakeOut);*/
+    IntakeIn.whenPressed(new ButtonPress("IntakeIn"));
+    IntakeOut = new JoystickButton(ButtonBoard, RobotMap.IntakeOut);
+    IntakeOut.whenPressed(new ButtonPress("IntakeOut"));
   }  
 }

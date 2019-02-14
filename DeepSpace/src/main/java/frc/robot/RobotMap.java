@@ -33,7 +33,7 @@ public class RobotMap {
 
   public static int AlignToTarget = 1;
 
-  public static int HatchFloor = 0;
+  public static int HatchFloor = 11;
   public static int HatchOne = 1;
   public static int HatchTwo = 2;
   public static int HatchThree = 3;
