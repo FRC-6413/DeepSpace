@@ -25,7 +25,7 @@ public class ButtonPress extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("test");
+    System.out.println(nameOfButton);
   }
 
   // Called repeatedly when this Command is scheduled to run
