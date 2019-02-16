@@ -14,10 +14,10 @@ public class RobotMap {
   public static int LeftFollow = 6;
   public static int RightFollow = 4;
 
-  public static int ElevatorMain = 6;
-  public static int ElevatorSecondary = 7;
+  public static int ElevatorMain = 8;
+  public static int ElevatorSecondary = 1;
 
-  public static int Wrist = 8;
+  public static int Wrist = 2;
 
   public static int Intake = 9;
 

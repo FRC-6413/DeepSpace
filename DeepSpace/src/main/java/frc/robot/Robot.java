@@ -60,7 +60,7 @@ public class Robot extends TimedRobot {
     Intake = new WPI_VictorSPX(RobotMap.Intake);
 
     ElevatorPot = new AnalogInput(RobotMap.ElevatorPot);
-    WristPot = new AnalogInput(RobotMap.WristPot);
+    //WristPot = new AnalogInput(RobotMap.WristPot);
 
     // climber
     Climber = new WPI_VictorSPX(RobotMap.Climber);
