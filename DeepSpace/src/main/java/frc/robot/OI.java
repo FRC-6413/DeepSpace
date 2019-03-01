@@ -3,11 +3,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import frc.robot.commands.AlignToTarget;
-import frc.robot.commands.ButtonPress;
+import frc.robot.commands.EjectCargo;
+import frc.robot.commands.IntakeCargo;
 import frc.robot.commands.SetIntakePosition;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Wrist;
 
 public class OI {
   //// CREATING BUTTONS
@@ -64,7 +63,7 @@ public class OI {
 
     //DriveJoystick;
     AlignToTargetButton = new JoystickButton(DriveJoystick, RobotMap.AlignToTarget);
-    AlignToTargetButton.whileHeld(new SetIntakePosition(Intake.HATCH_PICKUP));
+    AlignToTargetButton.whileHeld(new SetIntakePosition(Wrist.HATCH_PICKUP));
     //AlignToTargetButton.whileHeld(new AlignToTarget(DriveJoystick));
 
     // Button Board
@@ -73,7 +72,7 @@ public class OI {
 
     
     HatchOne = new JoystickButton(ButtonBoard, RobotMap.HatchOne);
-    HatchOne.whileHeld(new SetIntakePosition(Intake.HATCH_PICKUP));
+    HatchOne.whileHeld(new SetIntakePosition(Wrist.HATCH_PICKUP));
 
     HatchTwo = new JoystickButton(ButtonBoard, RobotMap.HatchTwo);
     HatchThree = new JoystickButton(ButtonBoard, RobotMap.HatchThree);
@@ -82,8 +81,13 @@ public class OI {
     CargoTwo = new JoystickButton(ButtonBoard, RobotMap.CargoTwo);
     CargoThree = new JoystickButton(ButtonBoard, RobotMap.CargoThree);
     Park = new JoystickButton(ButtonBoard, RobotMap.Park);
+
     IntakeIn = new JoystickButton(ButtonBoard, RobotMap.IntakeIn);
+    IntakeIn.whileHeld(new IntakeCargo());
+
     IntakeOut = new JoystickButton(ButtonBoard, RobotMap.IntakeOut);
+    IntakeOut.whileHeld(new EjectCargo());
+
     ManualOverride = new JoystickButton(ButtonBoard, RobotMap.Joystick);
   }  
 }

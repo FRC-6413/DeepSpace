@@ -8,17 +8,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Wrist;
 
 public class SetIntakePosition extends Command {
 
-  public static Intake intake = new Intake();
+  public static Wrist wrist = new Wrist();
   private double setpoint;
 
   public SetIntakePosition(double setpoint) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(intake);
+    requires(wrist);
 
     this.setpoint = setpoint;
   }
@@ -26,7 +26,7 @@ public class SetIntakePosition extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    intake.setSetpoint(setpoint);
+    wrist.setSetpoint(setpoint);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -37,7 +37,7 @@ public class SetIntakePosition extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Math.abs(intake.getPosition()) - setpoint < 0.05;
+    return Math.abs(wrist.getPosition()) - setpoint < 0.05;
   }
 
   // Called once after isFinished returns true

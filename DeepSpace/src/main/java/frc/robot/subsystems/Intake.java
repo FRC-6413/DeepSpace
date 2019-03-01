@@ -7,61 +7,28 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import frc.robot.Robot;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
  */
-public class Intake extends PIDSubsystem {
+public class Intake extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
 
-  public static final double Kp = -5;
-  public static final double Ki = 0.0;
-  public static final double Kd = 0.0;
 
-  public static final double HATCH_PICKUP = 2.285;
-  public static final double BALL_PICKUP = 2.83;
-  public static final double HATCH_STOW = 0.63;
-  public static final double STOW = 0.0;
-
-  WPI_TalonSRX intakeMotor = new WPI_TalonSRX(3);
-  AnalogInput wristPot = new AnalogInput(0);
-  
-  public Intake() {
-    // Intert a subsystem name and PID values here
-    super("Intake", Kp, Ki, Kd);
-    // Use these to get going:
-    // setSetpoint() - Sets where the PID controller should move the system
-    // to
-    // enable() - Enables the PID controller.
-
-    setSetpoint(HATCH_PICKUP);
-    enable();
-  }
+  //TODO: Validate this
+  WPI_VictorSPX intakeMotor = new WPI_VictorSPX(/*RobotMap.Intake*/ 3);
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    //wristPot = new AnalogInput(0);
   }
 
-  @Override
-  protected double returnPIDInput() {
-    // Return your input value for the PID loop
-    // e.g. a sensor, like a potentiometer:
-    // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return wristPot.getVoltage();
-  }
-
-  @Override
-  protected void usePIDOutput(double output) {
-    // Use output to drive your system, like a motor
-    // e.g. yourMotor.set(output);
-    intakeMotor.set(output);
-    System.out.println("output: " + output);
+  public void Cargo(double speed) {
+    intakeMotor.set(speed);
   }
 }
