@@ -12,26 +12,27 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.Robot;
 
-public class Elevator extends PIDSubsystem {
+public class SecondStageElevator extends PIDSubsystem {  
   private static final double Kp = 0.0009;
   private static final double Ki = 0;
   private static final double Kd = 0.0005;
 
-  WPI_TalonSRX elevatorStage = Robot.Elevator;
+  WPI_TalonSRX elevatorStage = Robot.ElevatorSecondary;
+  
+  public SecondStageElevator() {
+    super("SecondStageElevator", Kp, Ki, Kd);
 
-  public Elevator() {
-    super("Elevator", Kp, Ki, Kd);
-    
     elevatorStage.setSelectedSensorPosition(0);
-    setSetpoint(1000);    
+
+    setSetpoint(1);    
     getPIDController().setContinuous(false);
     setAbsoluteTolerance(.05);
-
-    enable();
   }
 
   @Override
   public void initDefaultCommand() {
+    // Set the default command for a subsystem here.
+    // setDefaultCommand(new MySpecialCommand());
   }
 
   @Override
