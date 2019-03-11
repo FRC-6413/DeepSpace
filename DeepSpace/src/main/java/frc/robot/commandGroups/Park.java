@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.RobotMap;
 import frc.robot.commands.SetFirstStage;
 import frc.robot.commands.SetIntakePosition;
+import frc.robot.commands.SetPneumaticPosition;
 import frc.robot.commands.SetSecondStage;
 
 public class Park extends CommandGroup {
@@ -18,6 +19,6 @@ public class Park extends CommandGroup {
     addParallel(new SetFirstStage(RobotMap.StageOnePark));
     addParallel(new SetSecondStage(RobotMap.StageTwoPark));
     addParallel(new SetIntakePosition(RobotMap.IntakeHatchDeploy));
-    //addParallel(new SetPneumaticPostion(in));
+    addParallel(new SetPneumaticPosition(false));
   }
 }

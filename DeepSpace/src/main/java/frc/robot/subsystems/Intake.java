@@ -9,7 +9,10 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 
 /**
  * Add your docs here.
@@ -31,4 +34,12 @@ public class Intake extends Subsystem {
   public void Cargo(double speed) {
     intakeMotor.set(speed);
   }
+
+  public void ExtendArm(boolean extend) {
+    if(extend) {
+      Robot.armExtender.set(Value.kForward);
+    } else {
+      Robot.armExtender.set(Value.kReverse);
+    }
+  } 
 }

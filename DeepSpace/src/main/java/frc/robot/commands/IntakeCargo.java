@@ -8,17 +8,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.subsystems.Intake;
+import frc.robot.Robot;
 
 public class IntakeCargo extends Command {
 
-  Intake intake = new Intake();
   private final double INTAKE_SPEED = 0.5;
 
   public IntakeCargo() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(intake);
+    requires(Robot.IntakeSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -29,7 +28,7 @@ public class IntakeCargo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    intake.Cargo(INTAKE_SPEED);
+    Robot.IntakeSubsystem.Cargo(INTAKE_SPEED);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -41,7 +40,7 @@ public class IntakeCargo extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    intake.Cargo(0);
+    Robot.IntakeSubsystem.Cargo(0);
   }
 
   // Called when another command which requires one or more of the same

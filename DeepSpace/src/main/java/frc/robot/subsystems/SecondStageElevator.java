@@ -18,10 +18,13 @@ public class SecondStageElevator extends PIDSubsystem {
   private static final double Kd = 0.0005;
 
   WPI_TalonSRX elevatorStage = Robot.ElevatorSecondary;
+
+  private int _currentDesiredSetpoint;
   
   public SecondStageElevator() {
     super("SecondStageElevator", Kp, Ki, Kd);
 
+    _currentDesiredSetpoint = 0;
     elevatorStage.setSelectedSensorPosition(0);
 
     setSetpoint(1);    
@@ -43,5 +46,14 @@ public class SecondStageElevator extends PIDSubsystem {
   @Override
   protected void usePIDOutput(double output) {
     elevatorStage.set(output);
+  }
+
+  public void setDesiredSetpoint(int setpoint) {
+    _currentDesiredSetpoint = setpoint;
+    setSetpoint(setpoint);
+  }
+
+  public int GetCurrentSetpoint() {
+    return _currentDesiredSetpoint;
   }
 }

@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.RobotMap;
 import frc.robot.commands.SetFirstStage;
 import frc.robot.commands.SetIntakePosition;
+import frc.robot.commands.SetPneumaticPosition;
 import frc.robot.commands.SetSecondStage;
 
 public class CargoGround extends CommandGroup {
@@ -18,6 +19,6 @@ public class CargoGround extends CommandGroup {
     addParallel(new SetFirstStage(RobotMap.StageOneCargoFloor));
     addParallel(new SetSecondStage(RobotMap.StageTwoCargoFloor));
     addParallel(new SetIntakePosition(RobotMap.IntakeCargoPickup));
-    //addParallel(new SetPneumaticPostion(out));
+    addParallel(new SetPneumaticPosition(true));
   }
 }

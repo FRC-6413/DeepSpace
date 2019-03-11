@@ -22,7 +22,8 @@ public class SetFirstStage extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.ElevatorSubsystem.setSetpoint(SetPoint);
+    //Robot.ElevatorSubsystem.setSetpoint(SetPoint);
+    Robot.ElevatorSubsystem.setDesiredSetpoint(SetPoint);
   }
 
   // Called repeatedly when this Command is scheduled to run

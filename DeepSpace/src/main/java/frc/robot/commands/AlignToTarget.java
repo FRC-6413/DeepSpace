@@ -29,6 +29,8 @@ public class AlignToTarget extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -60,11 +62,14 @@ public class AlignToTarget extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }
