@@ -7,7 +7,7 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick.AxisType;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
@@ -31,12 +31,12 @@ public class ElevatorOverrideCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double value = JoystickHelpers.DeadZoneInput(OI.ButtonBoard.getY(), .2);
-    if(value != 0) {
+    double value = JoystickHelpers.DeadZoneInput(OI.ManualOverride.getY(Hand.kLeft), .2);
+    /*if(value != 0) {
       Robot.ElevatorSubsystem.getCurrentCommand().cancel();
-    }
+    }*/
 
-    //Robot.ElevatorOverrideSubsystem.MoveElevator((int)(value * SpeedMultiplier));
+    Robot.ElevatorOverrideSubsystem.MoveElevator((int)(value * SpeedMultiplier));
   }
 
   // Make this return true when this Command no longer needs to run execute()

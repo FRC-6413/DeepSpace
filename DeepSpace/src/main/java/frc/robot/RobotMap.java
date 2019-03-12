@@ -30,6 +30,7 @@ public class RobotMap {
   // controllers
   public static int DriveController = 0;
   public static int ButtonBoard = 1;
+  public static int ManualOverride = 2;
 
   public static int AlignToTarget = 1;
 
