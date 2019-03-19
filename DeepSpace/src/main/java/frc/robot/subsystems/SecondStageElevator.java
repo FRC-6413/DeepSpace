@@ -25,11 +25,12 @@ public class SecondStageElevator extends PIDSubsystem {
     super("SecondStageElevator", Kp, Ki, Kd);
 
     _currentDesiredSetpoint = 0;
-    elevatorStage.setSelectedSensorPosition(0);
+    //elevatorStage.setSelectedSensorPosition(0);
 
-    setSetpoint(1);    
+    //setSetpoint(1);    
     getPIDController().setContinuous(false);
     setAbsoluteTolerance(.05);
+    enable();
   }
 
   @Override
@@ -40,17 +41,18 @@ public class SecondStageElevator extends PIDSubsystem {
 
   @Override
   protected double returnPIDInput() {
+    System.out.println("Second Stage: " + (double)elevatorStage.getSelectedSensorPosition());
     return (double)elevatorStage.getSelectedSensorPosition();
   }
 
   @Override
   protected void usePIDOutput(double output) {
-    elevatorStage.set(output);
+    //elevatorStage.set(output);
   }
 
   public void setDesiredSetpoint(int setpoint) {
     _currentDesiredSetpoint = setpoint;
-    setSetpoint(setpoint);
+    //setSetpoint(setpoint);
   }
 
   public int GetCurrentSetpoint() {

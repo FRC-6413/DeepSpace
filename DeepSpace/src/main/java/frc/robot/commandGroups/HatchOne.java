@@ -13,12 +13,13 @@ import frc.robot.commands.SetFirstStage;
 import frc.robot.commands.SetIntakePosition;
 import frc.robot.commands.SetPneumaticPosition;
 import frc.robot.commands.SetSecondStage;
+import frc.robot.subsystems.Wrist;
 
 public class HatchOne extends CommandGroup {
   public HatchOne() {
     addParallel(new SetFirstStage(RobotMap.StageOneHatchOne));
     addParallel(new SetSecondStage(RobotMap.StageTwoHatchOne));
-    addParallel(new SetIntakePosition(RobotMap.IntakeHatchDeploy));
+    addParallel(new SetIntakePosition(Wrist.HATCH_STOW));
     addParallel(new SetPneumaticPosition(true));
   }
 }

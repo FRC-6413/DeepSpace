@@ -21,7 +21,7 @@ public class DriveBase extends Subsystem {
   }
 
   public void ArcadeDriveMethod(XboxController controller) {
-    double x = JoystickHelpers.DeadZoneInput(controller.getX(Hand.kRight), 0.3);
+    double x = JoystickHelpers.DeadZoneInput(controller.getX(Hand.kRight), 0.3) * 0.75;
     double y = JoystickHelpers.DeadZoneInput(controller.getY(Hand.kLeft), 0.1) * -1;
 
     _robotDrive.arcadeDrive(y, x);

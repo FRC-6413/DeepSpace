@@ -13,15 +13,21 @@ import frc.robot.commandGroups.HatchOne;
 import frc.robot.commandGroups.HatchThree;
 import frc.robot.commandGroups.HatchTwo;
 import frc.robot.commandGroups.Park;
+import frc.robot.commands.AlignToTarget;
 import frc.robot.commands.EjectCargo;
+import frc.robot.commands.EjectHatch;
 import frc.robot.commands.IntakeCargo;
 import frc.robot.commands.SetIntakePosition;
+import frc.robot.commands.SetPneumaticPosition;
+import frc.robot.commands.StopIntake;
 import frc.robot.subsystems.Wrist;
 
 public class OI {
   // Driver Joystick
   public XboxController DriveJoystick;
   public static JoystickButton AlignToTargetButton;
+  public static JoystickButton PneumaticsIn;
+  public static JoystickButton PneumaticsOut;
 
   // Button Board
   public static Joystick ButtonBoard;
@@ -36,17 +42,36 @@ public class OI {
   public static JoystickButton Park;
   public static JoystickButton IntakeIn;
   public static JoystickButton IntakeOut;
-  public static Joystick ManualOverride;
+
+  //Elevator Override Controls
+  public static XboxController ManualOverride;
+  public static JoystickButton IntakeInOverride;
+  public static JoystickButton IntakeOutOverride;
 
 
   public OI() {
     // Driver controller
     DriveJoystick = new XboxController(RobotMap.DriveController);
 
+    //Elevator controller
+    ManualOverride = new XboxController(RobotMap.ElevatorController);
+
+    IntakeInOverride = new JoystickButton(ManualOverride, 5);
+    IntakeInOverride.whenPressed(new SetPneumaticPosition(false));
+
+    IntakeOutOverride = new JoystickButton(ManualOverride, 6);
+    IntakeOutOverride.whenPressed(new SetPneumaticPosition(true));
+
     //DriveJoystick;
     AlignToTargetButton = new JoystickButton(DriveJoystick, RobotMap.AlignToTarget);
-    AlignToTargetButton.whileHeld(new SetIntakePosition(Wrist.HATCH_PICKUP));
-    //AlignToTargetButton.whileHeld(new AlignToTarget(DriveJoystick));
+    //AlignToTargetButton.whileHeld(new SetIntakePosition(Wrist.HATCH_PICKUP));
+    AlignToTargetButton.whileHeld(new AlignToTarget(DriveJoystick));
+
+    PneumaticsIn = new JoystickButton(DriveJoystick, 5);
+    PneumaticsIn.whenPressed(new EjectHatch(true));
+
+    PneumaticsOut = new JoystickButton(DriveJoystick, 6);
+    PneumaticsOut.whenPressed(new EjectHatch(false));
 
     // Button Board
     ButtonBoard = new Joystick(RobotMap.ButtonBoard);
@@ -80,9 +105,11 @@ public class OI {
 
     IntakeIn = new JoystickButton(ButtonBoard, RobotMap.IntakeIn);
     IntakeIn.whileHeld(new IntakeCargo());
+    IntakeIn.whenReleased(new StopIntake());
 
     IntakeOut = new JoystickButton(ButtonBoard, RobotMap.IntakeOut);
     IntakeOut.whileHeld(new EjectCargo());
+    IntakeOut.whenReleased(new StopIntake());
 
     //ManualOverride = new JoystickButton(ButtonBoard, RobotMap.Joystick);
   }  

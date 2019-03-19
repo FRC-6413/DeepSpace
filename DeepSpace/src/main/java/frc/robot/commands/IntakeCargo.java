@@ -12,7 +12,7 @@ import frc.robot.Robot;
 
 public class IntakeCargo extends Command {
 
-  private final double INTAKE_SPEED = 0.5;
+  private final double INTAKE_SPEED = -0.5;
 
   public IntakeCargo() {
     // Use requires() here to declare subsystem dependencies
@@ -40,7 +40,7 @@ public class IntakeCargo extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.IntakeSubsystem.Cargo(0);
+    //Robot.IntakeSubsystem.Cargo(0);
   }
 
   // Called when another command which requires one or more of the same

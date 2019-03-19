@@ -12,7 +12,7 @@ import frc.robot.Robot;
 
 public class EjectCargo extends Command {
 
-  private final double OUTTAKE_SPEED = -1.0;
+  private final double OUTTAKE_SPEED = 1.0;
 
   public EjectCargo() {
     // Use requires() here to declare subsystem dependencies
@@ -40,7 +40,7 @@ public class EjectCargo extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.IntakeSubsystem.Cargo(0);
+    //Robot.IntakeSubsystem.Cargo(0);
   }
 
   // Called when another command which requires one or more of the same

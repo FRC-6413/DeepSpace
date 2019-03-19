@@ -13,12 +13,13 @@ import frc.robot.commands.SetFirstStage;
 import frc.robot.commands.SetIntakePosition;
 import frc.robot.commands.SetPneumaticPosition;
 import frc.robot.commands.SetSecondStage;
+import frc.robot.subsystems.Wrist;
 
 public class CargoThree extends CommandGroup {
   public CargoThree() {
     addParallel(new SetFirstStage(RobotMap.StageOneCargoThree));
     addParallel(new SetSecondStage(RobotMap.StageTwoCargoThree));
-    addParallel(new SetIntakePosition(RobotMap.IntakeCargoDeploy));
+    addParallel(new SetIntakePosition(Wrist.BALL_DEPLOY));
     addParallel(new SetPneumaticPosition(true));
   }
 }

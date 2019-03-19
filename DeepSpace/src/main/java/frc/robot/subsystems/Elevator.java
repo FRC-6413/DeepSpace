@@ -19,7 +19,9 @@ public class Elevator extends PIDSubsystem {
 
   private int _currentDesiredSetpoint;
 
-  WPI_TalonSRX elevatorStage = Robot.Elevator;
+  WPI_TalonSRX elevatorStage = new WPI_TalonSRX(2);
+
+  //WPI_TalonSRX elevatorStage = Robot.Elevator;
 
   public Elevator() {
     super("Elevator", Kp, Ki, Kd);
@@ -40,12 +42,13 @@ public class Elevator extends PIDSubsystem {
 
   @Override
   protected double returnPIDInput() {
+    System.out.println("First Stage: " + (double)elevatorStage.getSelectedSensorPosition());
     return (double)elevatorStage.getSelectedSensorPosition();
   }
 
   @Override
   protected void usePIDOutput(double output) {    
-    elevatorStage.set(output);
+    //elevatorStage.set(output);
   }
 
   public void setDesiredSetpoint(int setpoint) {

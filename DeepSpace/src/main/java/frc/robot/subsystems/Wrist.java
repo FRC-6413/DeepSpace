@@ -7,7 +7,9 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -17,16 +19,17 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class Wrist extends PIDSubsystem {
 
-  public static final double Kp = -5;
-  public static final double Ki = 0.0;
+  public static final double Kp = 0.8;
+  public static final double Ki = 0.0001;
   public static final double Kd = 0.0;
 
-  public static final double HATCH_PICKUP = 2.285;
-  public static final double BALL_PICKUP = 2.83;
-  public static final double HATCH_STOW = 0.63;
+  public static final double HATCH_PICKUP = 0.92;
+  public static final double BALL_PICKUP = 2.24;
+  public static final double HATCH_STOW = 2.24;
+  public static final double BALL_DEPLOY = 1.55;
   public static final double STOW = 0.0;
 
-  WPI_TalonSRX intakeMotor = new WPI_TalonSRX(3);
+  WPI_VictorSPX intakeMotor = new WPI_VictorSPX(5);
   AnalogInput wristPot = new AnalogInput(0);
   
   public Wrist() {
@@ -37,7 +40,7 @@ public class Wrist extends PIDSubsystem {
     // to
     // enable() - Enables the PID controller.
 
-    setSetpoint(HATCH_PICKUP);
+    setSetpoint(HATCH_STOW);
     enable();
   }
 
@@ -61,6 +64,8 @@ public class Wrist extends PIDSubsystem {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
     intakeMotor.set(output);
-    System.out.println("output: " + output);
+    //System.out.println("output: " + output);
+    
+    //System.out.println(wristPot.getVoltage());
   }
 }

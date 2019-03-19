@@ -11,10 +11,16 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class EjectHatch extends Command {
-  public EjectHatch() {
+
+  boolean extendPneumatics = false;
+
+  
+  public EjectHatch(boolean extend) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.IntakeSubsystem);
+
+    extendPneumatics = extend;
   }
 
   // Called just before this Command runs the first time
@@ -25,6 +31,7 @@ public class EjectHatch extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.IntakeSubsystem.EjectHatch(extendPneumatics);
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -14,10 +14,10 @@ public class RobotMap {
   public static int LeftFollow = 6;
   public static int RightFollow = 4;
 
-  public static int ElevatorMain = 8;
+  public static int ElevatorMain = 2;
   public static int ElevatorSecondary = 1;
 
-  public static int Wrist = 2;
+  public static int Wrist = 5;
 
   public static int Intake = 9;
 
@@ -30,6 +30,7 @@ public class RobotMap {
   // controllers
   public static int DriveController = 0;
   public static int ButtonBoard = 1;
+  public static int ElevatorController = 2;
 
   public static int AlignToTarget = 1;
 
@@ -49,6 +50,7 @@ public class RobotMap {
   public static int StageOnePark = 0;
   public static int StageOneHatchFloor = 0;
   public static int StageOneHatchOne = 0;
+  //public static int StageOneHatchTwo = 21000;
   public static int StageOneHatchTwo = 0;
   public static int StageOneHatchThree = 0;
   public static int StageOneCargoFloor = 0;

@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -22,6 +23,12 @@ import frc.robot.subsystems.SecondStageElevator;
 import frc.robot.subsystems.Wrist;
 
 public class Robot extends TimedRobot {
+  //Elevator and Arm Talons
+  public static WPI_TalonSRX Elevator = new WPI_TalonSRX(RobotMap.ElevatorMain);
+  public static WPI_TalonSRX ElevatorSecondary = new WPI_TalonSRX(RobotMap.ElevatorSecondary);
+  public static WPI_VictorSPX Wrist = new WPI_VictorSPX(RobotMap.Wrist);
+  public static WPI_VictorSPX Intake = new WPI_VictorSPX(RobotMap.Intake);
+
   public static DriveBase DriveBase = new DriveBase();
   public static Elevator ElevatorSubsystem = new Elevator();
   public static SecondStageElevator SecondStageElevatorSubsystem = new SecondStageElevator();
@@ -37,10 +44,6 @@ public class Robot extends TimedRobot {
   public static WPI_VictorSPX RightFollow = new WPI_VictorSPX(RobotMap.RightFollow);
 
   // arm and elevator
-  public static WPI_TalonSRX Elevator;
-  public static WPI_TalonSRX ElevatorSecondary;
-  public static WPI_VictorSPX Wrist;
-  public static WPI_VictorSPX Intake;
 
   public static AnalogInput ElevatorPot;
   public static AnalogInput WristPot;
@@ -70,14 +73,14 @@ public class Robot extends TimedRobot {
     LeftFollow.follow(LeftMotor);
     RightFollow.follow(RightMotor);
 
-    // elevator and arm
-    Elevator = new WPI_TalonSRX(RobotMap.ElevatorMain);
-    ElevatorSecondary = new WPI_TalonSRX(RobotMap.ElevatorSecondary);
-    Wrist = new WPI_VictorSPX(RobotMap.Wrist);
-    Intake = new WPI_VictorSPX(RobotMap.Intake);
+    LeftMotor.enableCurrentLimit(true);
+    RightMotor.enableCurrentLimit(true);
 
     ElevatorPot = new AnalogInput(RobotMap.ElevatorPot);
     //WristPot = new AnalogInput(RobotMap.WristPot);
+
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1);
 
     // climber
     Climber = new WPI_VictorSPX(RobotMap.Climber);
@@ -93,11 +96,13 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledInit() {
-  }
+ }
 
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1);
   }
  
   @Override
@@ -115,6 +120,8 @@ public class Robot extends TimedRobot {
     /*if (_autonomousCommand != null) {
       _autonomousCommand.cancel();
     }*/
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1);
   }
 
   @Override

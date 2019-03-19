@@ -23,7 +23,7 @@ public class Intake extends Subsystem {
 
 
   //TODO: Validate this
-  WPI_VictorSPX intakeMotor = new WPI_VictorSPX(/*RobotMap.Intake*/ 3);
+  WPI_VictorSPX intakeMotor = new WPI_VictorSPX(10);
 
   @Override
   public void initDefaultCommand() {
@@ -38,8 +38,18 @@ public class Intake extends Subsystem {
   public void ExtendArm(boolean extend) {
     if(extend) {
       Robot.armExtender.set(Value.kForward);
+      //Robot.ejectHatch.set(Value.kForward);
     } else {
       Robot.armExtender.set(Value.kReverse);
+      //Robot.ejectHatch.set(Value.kReverse);
     }
   } 
+
+  public void EjectHatch(boolean extend) {
+      if(extend) {
+        Robot.ejectHatch.set(Value.kForward);
+      } else {
+        Robot.ejectHatch.set(Value.kReverse);
+      }
+  }
 }
