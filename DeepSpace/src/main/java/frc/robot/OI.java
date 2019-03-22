@@ -2,7 +2,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commandGroups.CargoGround;
 import frc.robot.commandGroups.CargoOne;
@@ -43,10 +42,15 @@ public class OI {
   public static JoystickButton IntakeIn;
   public static JoystickButton IntakeOut;
 
+<<<<<<< HEAD
   //Elevator Override Controls
   public static XboxController ManualOverride;
   public static JoystickButton IntakeInOverride;
   public static JoystickButton IntakeOutOverride;
+=======
+  //Manual Override Controller
+  public static XboxController ManualOverride;
+>>>>>>> 0c40fc87aca14c5c133411a58ec1f6f561a6af6e
 
 
   public OI() {
@@ -111,6 +115,6 @@ public class OI {
     IntakeOut.whileHeld(new EjectCargo());
     IntakeOut.whenReleased(new StopIntake());
 
-    //ManualOverride = new JoystickButton(ButtonBoard, RobotMap.Joystick);
+    ManualOverride = new XboxController(RobotMap.ManualOverride);
   }  
 }
